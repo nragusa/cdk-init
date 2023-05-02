@@ -9,8 +9,10 @@ PROJECT_DIRECTORY = os.path.realpath(os.path.curdir)
 def remove_file(filepath):
     os.remove(os.path.join(PROJECT_DIRECTORY, filepath))
 
+
 def remove_directory(directory):
-    shutil.rmtree(os.path.join(PROJECT_DIRECTORY, directory), ignore_errors=True)
+    shutil.rmtree(os.path.join(PROJECT_DIRECTORY,
+                  directory), ignore_errors=True)
 
 
 if __name__ == '__main__':
@@ -19,11 +21,8 @@ if __name__ == '__main__':
     remove_file('requirements-dev.txt')
     remove_directory('.venv/')
     subprocess.run(
-        ['/home/ec2-user/.pyenv/shims/pipenv', '--python', '3.9']
+        ['/home/ec2-user/.pyenv/shims/pipenv', '--python', '3.10']
     )
     subprocess.run(
         ['/home/ec2-user/.pyenv/shims/pipenv', 'install', 'aws-cdk-lib']
-    )
-    subprocess.run(
-        ['/home/ec2-user/.pyenv/shims/pipenv', 'install', '--dev','autopep8']
     )
