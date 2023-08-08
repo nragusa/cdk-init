@@ -21,7 +21,7 @@ if __name__ == '__main__':
     remove_file('requirements-dev.txt')
     remove_directory('.venv/')
     subprocess.run(
-        ['/home/ec2-user/.pyenv/shims/pipenv', '--python', '3.10']
+        ['/home/ec2-user/.pyenv/shims/pipenv', '--python', '3.11']
     )
     subprocess.run(
         ['/home/ec2-user/.pyenv/shims/pipenv', 'install', 'aws-cdk-lib']
