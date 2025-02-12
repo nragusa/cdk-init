@@ -1,7 +1,15 @@
 import subprocess
+import sys
 
-app_name = '{{ cookiecutter.project_name}}'
+app_name = '{{cookiecutter.project_name}}'
 
-subprocess.run(
-    ['/home/ec2-user/.npm-packages/bin/cdk', 'init', '--language=python']
-)
+try:
+    subprocess.run(
+        ['cdk', 'init', '--language=python'],
+        capture_output=True,
+        text=True,
+        check=True
+    )
+except subprocess.CalledProcessError as e:
+    print(f"Error running 'cdk init': {e}")
+    sys.exit(1)
