@@ -23,7 +23,7 @@ if __name__ == '__main__':
     remove_directory('.venv/')
     try:
         subprocess.run(
-            ['venv'],
+            ['zsh', '-i', '-c', 'venv'],
             capture_output=True,
             text=True,
             check=True
