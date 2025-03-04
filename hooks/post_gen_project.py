@@ -34,12 +34,9 @@ if __name__ == '__main__':
             text=True,
             check=True
         )
-        subprocess.run(
-            ['echo', 'export AWS_PROFILE=sso', '>>', '.envrc'],
-            capture_output=True,
-            text=True,
-            check=True
-        )
+        with open('.envrc', 'a') as f:
+            f.write('export AWS_PROFILE=sso\n')
+            f.write('export AWS_REGION=us-east-2\n')
         subprocess.run(
             ['direnv', 'allow'],
             capture_output=True,
