@@ -23,11 +23,17 @@ if __name__ == '__main__':
     remove_directory('.venv/')
     try:
         subprocess.run(
-            ['poetry', 'add', 'aws-cdk-lib'],
+            ['venv'],
+            capture_output=True,
+            text=True,
+            check=True
+        )
+        subprocess.run(
+            ['uv', 'add', 'aws-cdk-lib'],
             capture_output=True,
             text=True,
             check=True
         )
     except subprocess.CalledProcessError as e:
-        print(f"Error running 'poetry add aws-cdk-lib': {e}")
+        print(f"Error running 'venv': {e}")
         sys.exit(1)
