@@ -34,6 +34,18 @@ if __name__ == '__main__':
             text=True,
             check=True
         )
+        subprocess.run(
+            ['echo', 'export AWS_PROFILE=sso', '>>', '.envrc'],
+            capture_output=True,
+            text=True,
+            check=True
+        )
+        subprocess.run(
+            ['direnv', 'allow'],
+            capture_output=True,
+            text=True,
+            check=True
+        )
     except subprocess.CalledProcessError as e:
         print(f"Error running 'venv': {e}")
         sys.exit(1)
